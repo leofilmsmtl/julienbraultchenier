@@ -995,7 +995,31 @@
 
         @media (max-width: 768px) {
             .photo-gallery {
-                grid-template-columns: 1fr;
+                column-count: 1;
+            }
+
+            .photo-card .caption {
+                position: relative;
+                background: var(--bg-card);
+                padding: 1rem 1.25rem;
+                color: var(--text-primary);
+                border-top: 1px solid var(--border-subtle);
+            }
+
+            .photo-card .caption h4 {
+                color: var(--text-primary);
+            }
+
+            .photo-card .caption p {
+                color: var(--text-secondary);
+            }
+
+            .photo-card:hover {
+                transform: none;
+            }
+
+            .photo-card:hover img {
+                transform: none;
             }
         }
 
