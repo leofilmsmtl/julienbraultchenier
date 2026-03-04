@@ -1,0 +1,1702 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Julien Brault-Chénier — Candidature RRS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0e17;
+            --bg-secondary: #111827;
+            --bg-card: #1a2235;
+            --bg-card-hover: #1f2a40;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --accent-blue: #3b82f6;
+            --accent-cyan: #06b6d4;
+            --accent-purple: #8b5cf6;
+            --accent-orange: #f97316;
+            --accent-green: #10b981;
+            --accent-red: #ef4444;
+            --gradient-primary: linear-gradient(135deg, #3b82f6, #06b6d4);
+            --gradient-hero: linear-gradient(135deg, #1e3a5f 0%, #0a0e17 50%, #1a1030 100%);
+            --gradient-card: linear-gradient(145deg, rgba(59, 130, 246, 0.08), rgba(6, 182, 212, 0.04));
+            --border-subtle: rgba(148, 163, 184, 0.1);
+            --border-accent: rgba(59, 130, 246, 0.3);
+            --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.3);
+            --shadow-glow: 0 0 40px rgba(59, 130, 246, 0.15);
+            --radius: 16px;
+            --radius-sm: 10px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* ===== NAVIGATION ===== */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            background: rgba(10, 14, 23, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-subtle);
+            transition: all 0.3s ease;
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-brand {
+            font-weight: 700;
+            font-size: 1.1rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-primary);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--gradient-hero);
+            position: relative;
+            overflow: hidden;
+            padding: 6rem 2rem 4rem;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -30%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.12) 0%, transparent 70%);
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(6, 182, 212, 0.08) 0%, transparent 70%);
+            animation: float 10s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translate(0, 0);
+            }
+
+            50% {
+                transform: translate(30px, -30px);
+            }
+        }
+
+        .hero-content {
+            max-width: 900px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1.2rem;
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid var(--border-accent);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: var(--accent-cyan);
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero-badge .pulse {
+            width: 8px;
+            height: 8px;
+            background: var(--accent-green);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.5;
+                transform: scale(1.5);
+            }
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease 0.1s both;
+        }
+
+        .hero h1 .gradient {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            font-weight: 400;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease 0.3s both;
+        }
+
+        .hero-stat {
+            text-align: center;
+        }
+
+        .hero-stat .number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-stat .label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== SECTIONS ===== */
+        .section {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent-cyan);
+            margin-bottom: 0.75rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .section-title {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .section-desc {
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1.05rem;
+        }
+
+        /* ===== FIT SECTION (Why I'm the right fit) ===== */
+        .fit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .fit-card {
+            background: var(--gradient-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius);
+            padding: 2rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .fit-card:hover {
+            border-color: var(--border-accent);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .fit-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-primary);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .fit-card:hover::before {
+            opacity: 1;
+        }
+
+        .fit-icon {
+            width: 52px;
+            height: 52px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 14px;
+            font-size: 1.5rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .fit-icon.drone {
+            background: rgba(59, 130, 246, 0.15);
+        }
+
+        .fit-icon.business {
+            background: rgba(249, 115, 22, 0.15);
+        }
+
+        .fit-icon.robotics {
+            background: rgba(139, 92, 246, 0.15);
+        }
+
+        .fit-icon.bilingual {
+            background: rgba(16, 185, 129, 0.15);
+        }
+
+        .fit-icon.inspection {
+            background: rgba(6, 182, 212, 0.15);
+        }
+
+        .fit-icon.clients {
+            background: rgba(239, 68, 68, 0.15);
+        }
+
+        .fit-card h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+
+        .fit-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .fit-match {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            margin-top: 1rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--accent-green);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* ===== PROJECTS ===== */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius);
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .project-card:hover {
+            border-color: var(--border-accent);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .project-header {
+            padding: 1.75rem 2rem 0;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .project-logo {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .project-card h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .project-card .org {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .project-body {
+            padding: 1.25rem 2rem 1.75rem;
+        }
+
+        .project-body p {
+            color: var(--text-secondary);
+            font-size: 0.93rem;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            padding: 0.3rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .tag.drone {
+            background: rgba(59, 130, 246, 0.12);
+            color: var(--accent-blue);
+        }
+
+        .tag.lidar {
+            background: rgba(6, 182, 212, 0.12);
+            color: var(--accent-cyan);
+        }
+
+        .tag.robotics {
+            background: rgba(139, 92, 246, 0.12);
+            color: var(--accent-purple);
+        }
+
+        .tag.film {
+            background: rgba(249, 115, 22, 0.12);
+            color: var(--accent-orange);
+        }
+
+        .tag.inspection {
+            background: rgba(16, 185, 129, 0.12);
+            color: var(--accent-green);
+        }
+
+        /* ===== FILMOGRAPHY ===== */
+        .filmography-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .film-item {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            padding: 1.25rem 1.5rem;
+            border-radius: var(--radius-sm);
+            transition: background 0.3s;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .film-item:last-child {
+            border-bottom: none;
+        }
+
+        .film-item:hover {
+            background: rgba(59, 130, 246, 0.04);
+        }
+
+        .film-year {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--accent-cyan);
+            min-width: 50px;
+        }
+
+        .film-title {
+            font-weight: 600;
+            flex: 1;
+        }
+
+        .film-title .type {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-weight: 400;
+            margin-left: 0.5rem;
+        }
+
+        .film-role {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            text-align: right;
+            min-width: 180px;
+        }
+
+        .film-highlight {
+            background: rgba(249, 115, 22, 0.06) !important;
+            border-left: 3px solid var(--accent-orange);
+        }
+
+        /* ===== EQUIPMENT ===== */
+        .equip-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .equip-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-sm);
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .equip-card:hover {
+            border-color: var(--border-accent);
+        }
+
+        .equip-card .emoji {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .equip-card h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .equip-card p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* ===== CONTACT / CTA ===== */
+        .cta-section {
+            text-align: center;
+            padding: 6rem 2rem;
+            background: var(--gradient-hero);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at center, rgba(59, 130, 246, 0.1) 0%, transparent 60%);
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cta-content h2 {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-content p {
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-cards {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .contact-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-sm);
+            padding: 1.25rem 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: all 0.3s;
+        }
+
+        .contact-card:hover {
+            border-color: var(--border-accent);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .contact-card .icon {
+            font-size: 1.3rem;
+        }
+
+        .contact-card .info {
+            text-align: left;
+        }
+
+        .contact-card .info .label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .contact-card .info .value {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .cta-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .cta-link {
+            color: var(--accent-cyan);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition: color 0.3s;
+        }
+
+        .cta-link:hover {
+            color: var(--accent-blue);
+        }
+
+        /* ===== MOTIVATION SECTION ===== */
+        .motivation {
+            background: var(--bg-secondary);
+            border-radius: var(--radius);
+            border: 1px solid var(--border-subtle);
+            padding: 3rem;
+            max-width: 800px;
+            margin: 0 auto 4rem;
+            position: relative;
+        }
+
+        .motivation::before {
+            content: '"';
+            position: absolute;
+            top: -10px;
+            left: 30px;
+            font-size: 6rem;
+            font-weight: 900;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            opacity: 0.3;
+        }
+
+        .motivation p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            position: relative;
+            z-index: 1;
+        }
+
+        .motivation p+p {
+            margin-top: 1rem;
+        }
+
+        .motivation strong {
+            color: var(--text-primary);
+        }
+
+        /* ===== TIMELINE ===== */
+        .timeline {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--accent-blue), var(--accent-cyan), var(--accent-purple));
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2.5rem;
+            padding: 1.5rem 2rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-sm);
+            transition: all 0.3s;
+        }
+
+        .timeline-item:hover {
+            border-color: var(--border-accent);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -33px;
+            top: 1.75rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--accent-blue);
+            border: 3px solid var(--bg-primary);
+        }
+
+        .timeline-date {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--accent-cyan);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-item h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-item .company {
+            color: var(--accent-blue);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .timeline-item p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .timeline-item ul {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            padding-left: 1.25rem;
+            margin-top: 0.5rem;
+        }
+
+        .timeline-item li {
+            margin-bottom: 0.35rem;
+        }
+
+        /* ===== CV Download ===== */
+        .cv-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2.5rem;
+            background: var(--gradient-primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
+            margin-top: 2rem;
+        }
+
+        .cv-download:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px rgba(59, 130, 246, 0.4);
+        }
+
+        /* ===== CERTIFICATIONS ===== */
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .cert-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-sm);
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .cert-card:hover {
+            border-color: var(--border-accent);
+        }
+
+        .cert-card .cert-icon {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .cert-card h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 0.35rem;
+        }
+
+        .cert-card p {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-stats {
+                gap: 1.5rem;
+            }
+
+            .fit-grid,
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .film-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+
+            .film-role {
+                text-align: left;
+                min-width: unset;
+            }
+
+            .contact-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .motivation {
+                padding: 2rem;
+            }
+
+            .section {
+                padding: 4rem 1.5rem;
+            }
+        }
+
+        /* ===== PHOTO GALLERY ===== */
+        .photo-gallery {
+            column-count: 2;
+            column-gap: 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .photo-card {
+            position: relative;
+            border-radius: var(--radius);
+            overflow: hidden;
+            border: 1px solid var(--border-subtle);
+            transition: all 0.4s ease;
+            background: var(--bg-card);
+            margin-bottom: 1.5rem;
+            break-inside: avoid;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .photo-card:hover {
+            border-color: var(--border-accent);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .photo-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.6s ease;
+        }
+
+        .photo-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .photo-card .caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem 1.5rem 1.25rem;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.85));
+            color: white;
+        }
+
+        .photo-card .caption h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .photo-card .caption p {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        @media (max-width: 768px) {
+            .photo-gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== TESTIMONIAL QUOTES ===== */
+        .project-body blockquote {
+            border-left: 3px solid var(--accent-cyan);
+            padding-left: 1rem;
+            margin: 0.75rem 0;
+            font-style: italic;
+            color: var(--text-secondary);
+            font-size: 0.88rem;
+        }
+
+        /* ===== SCROLL ANIMATIONS ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== PRINT STYLES ===== */
+        @media print {
+            .nav {
+                display: none;
+            }
+
+            .hero {
+                min-height: auto;
+                padding: 2rem;
+            }
+
+            .section {
+                padding: 2rem 1rem;
+            }
+
+            * {
+                color: #000 !important;
+                background: #fff !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <div class="nav-brand">JBC</div>
+            <ul class="nav-links">
+                <li><a href="#apropos">À propos</a></li>
+                <li><a href="#competences">Compétences</a></li>
+                <li><a href="#projets">Projets</a></li>
+                <li><a href="#parcours">Parcours</a></li>
+                <li><a href="#filmographie">Filmographie</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="pulse"></span>
+                Candidature — Représentant commercial, Secteur industriel
+            </div>
+            <h1>
+                Julien<br>
+                <span class="gradient">Brault-Chénier</span>
+            </h1>
+            <p class="hero-subtitle">
+                Expert en opérations de drone & robotique avec 12+ ans d'expérience terrain.
+                Entrepreneur, chef-pilote et passionné de technologie prêt à propulser
+                la croissance de RRS dans le secteur industriel.
+            </p>
+        </div>
+    </section>
+
+    <!-- PHOTO GALLERY -->
+    <section class="section">
+        <div class="section-header reveal">
+            <span class="section-label">// En action</span>
+            <h2 class="section-title">Sur le terrain</h2>
+            <p class="section-desc">Des systèmes robotisés avancés sur des productions et projets d'envergure.</p>
+        </div>
+        <div class="photo-gallery">
+            <div class="photo-card reveal">
+                <img src="img/julien-agito-tarmac.jpg"
+                    alt="Julien avec le système robotisé Agito sur un tarmac d'aéroport" loading="lazy">
+                <div class="caption">
+                    <h4>Système robotisé Agito — Tarmac</h4>
+                    <p>Tournage publicitaire aviation avec contrôle de mouvement robotisé</p>
+                </div>
+            </div>
+            <div class="photo-card reveal">
+                <img src="img/julien-shotover-arena.jpg" alt="Julien avec le robot Shotover dans une aréna"
+                    loading="lazy">
+                <div class="caption">
+                    <h4>Robot Shotover — Aréna</h4>
+                    <p>Opérateur de système de caméra robotisé sur production majeure</p>
+                </div>
+            </div>
+            <div class="photo-card reveal">
+                <img src="img/Photo 2023-04-05 15 02 11.jpg"
+                    alt="Visite virtuelle de l'Agence spatiale canadienne et Canadarm" loading="lazy">
+                <div class="caption">
+                    <h4>ASC — Canadarm & Rover</h4>
+                    <p>Captation VR 360° des installations spatiales canadiennes</p>
+                </div>
+            </div>
+            <div class="photo-card reveal">
+                <img src="img/CpizQAJQ.jpeg" alt="DJI Matrice 300 RTK avec LiDAR" loading="lazy">
+                <div class="caption">
+                    <h4>DJI Matrice 300 RTK</h4>
+                    <p>Prêt pour mission avec capteur LiDAR L1 et caméra plein format P1</p>
+                </div>
+            </div>
+            <div class="photo-card reveal">
+                <img src="img/mRA0tbKA.jpeg" alt="Rig aérien VR personnalisé en vol" loading="lazy">
+                <div class="caption">
+                    <h4>Système VR aérien DIY</h4>
+                    <p>Drone customisé pour porter 12 caméras 360° stabilisées</p>
+                </div>
+            </div>
+            <div class="photo-card reveal">
+                <img src="img/mwWw-RJg.png" alt="Gros plan sur rig VR 12 Hero4" loading="lazy">
+                <div class="caption">
+                    <h4>Intégration technique DIY</h4>
+                    <p>Rig personnalisé de 12 caméras conçu et assemblé par moi-même</p>
+                </div>
+            </div>
+            <div class="photo-card reveal">
+                <img src="img/IMG_5577.heic" alt="Tournage sur le terrain" loading="lazy">
+                <div class="caption">
+                    <h4>Sur le terrain</h4>
+                    <p>Tournage cinéma pour les Cowboys Fringants</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MOTIVATION -->
+    <section class="section" id="apropos">
+        <div class="section-header reveal">
+            <span class="section-label">// À propos</span>
+            <h2 class="section-title">Pourquoi RRS ?</h2>
+        </div>
+        <div class="motivation reveal">
+            <p>
+                Depuis plus de 12 ans, je vis et respire la robotique et les drones — pas comme un passe-temps,
+                mais comme mon métier au quotidien. En travaillant en étroite collaboration avec <strong>LEO
+                    Films</strong>
+                depuis 2013, j'ai développé une forte expertise en vente B2B : prospecter des clients, pitcher des
+                services,
+                négocier des contrats et livrer des projets d'envergure. J'ai eu l'opportunité de servir (directement ou
+                via diverses agences)
+                des productions hollywoodiennes, des agences gouvernementales, des géants du jeu vidéo et des
+                multinationales
+                pharmaceutiques. <strong>Le développement d'affaires et la gestion client font partie intégrante de mon
+                    ADN professionnel.</strong>
+            </p>
+            <p>
+                Ce qui m'attire chez <strong>Remote Robotic Systems</strong>, c'est la convergence parfaite entre
+                ma passion pour la technologie robotique et l'opportunité de développement d'affaires dans le secteur
+                industriel. Je connais intimement les équipements, comme le DJI Matrice 300RTK, les capteurs LiDAR, et
+                Matterport, parce que je les utilise sur le terrain. J'ai également une expérience pratique en imagerie
+                thermale (DJI H20T). Je comprends les cas d'usage en inspection industrielle,
+                en énergie et en construction pour y avoir personnellement travaillé.
+            </p>
+            <p>
+                Je suis passionné, débrouillard, et j’ai une expertise poussée en réalité virtuelle. Quand un outil
+                standard n'existe pas, je trouve le moyen de l'assembler. En 2014, j'ai été parmi les pionniers
+                au Québec à assembler et opérer un système de captation VR aérienne, en intégrant 12 caméras GoPro
+                sur un drone DJI S1000. J'ai aussi fait concevoir des pièces imprimées en 3D pour des supports de
+                caméra sur mesure. Aujourd'hui, je développe en solo un jeu vidéo mobile sur Unity sans formation
+                formelle. <strong>Ce qui me définit : voir un problème, imaginer la solution technique,
+                    et la livrer.</strong>
+            </p>
+            <p>
+                Je suis prêt à franchir des portes, à rencontrer des décideurs en personne, et à bâtir des relations
+                commerciales durables dans le secteur industriel. Quand quelqu'un me dit non, je cherche le chemin
+                pour arriver à oui — l'Antonov 225 en est la preuve. <strong>Mon parcours unique combine l'expertise
+                    technique que vos clients recherchent avec un instinct de vendeur forgé par 12 ans
+                    d'entrepreneuriat sur le terrain.</strong>
+            </p>
+        </div>
+    </section>
+
+    <!-- COMPÉTENCES CLÉS / FIT -->
+    <section class="section" id="competences">
+        <div class="section-header reveal">
+            <span class="section-label">// Compétences clés</span>
+            <h2 class="section-title">L'adéquation parfaite</h2>
+            <p class="section-desc">
+                Chaque exigence du poste correspond à une compétence que j'ai développée et mise en pratique sur le
+                terrain.
+            </p>
+        </div>
+        <div class="fit-grid">
+            <div class="fit-card reveal">
+                <div class="fit-icon drone">🚁</div>
+                <h3>Expert en opérations de drone</h3>
+                <p>
+                    Chef-pilote certifié avec permis avancés en zones contrôlées (zones urbaines, tarmacs d'aéroport).
+                    Licence de pilote privé (PPL) monomoteurs. Capable d'être opérationnel en moins de 24 heures.
+                </p>
+                <span class="fit-match">✓ Correspond → Certification RPAS avancée</span>
+            </div>
+            <div class="fit-card reveal">
+                <div class="fit-icon business">💼</div>
+                <h3>Développement d'affaires</h3>
+                <p>
+                    12 ans d'expérience en service B2B = 12 ans de vente terrain. Prospection, présentations,
+                    soumissions, négociation et fidélisation client. J'ai aidé à bâtir le portfolio de LEO Films
+                    en sécurisant (directement ou via des agences) des comptes majeurs : Rheinmetall, Sandoz, Epic
+                    Games.
+                </p>
+                <span class="fit-match">✓ Correspond → Développeur d'affaires efficace</span>
+            </div>
+            <div class="fit-card reveal">
+                <div class="fit-icon robotics">🤖</div>
+                <h3>Robotique & systèmes avancés</h3>
+                <p>
+                    Expérience pratique avec des systèmes robotisés avancés incluant le Motion Impossible Agito
+                    (contrôle de mouvement robotisé) utilisé sur Transformers: Rise of the Beasts et des productions
+                    majeures.
+                </p>
+                <span class="fit-match">✓ Correspond → Expérience en robotique</span>
+            </div>
+            <div class="fit-card reveal">
+                <div class="fit-icon inspection">🔍</div>
+                <h3>Inspection industrielle</h3>
+                <p>
+                    Services d'inspection par drone depuis 2020 avec le Matrice 300RTK et caméra
+                    multispectrale/thermale. Expérience terrain en capture de données LiDAR et Matterport
+                    pour des projets d'envergure.
+                </p>
+                <span class="fit-match">✓ Correspond → Outils d'inspection (FLIR, LiDAR)</span>
+            </div>
+            <div class="fit-card reveal">
+                <div class="fit-icon bilingual">🌐</div>
+                <h3>Bilingue & Mobile</h3>
+                <p>
+                    Communication fluide en français et en anglais. Habitué aux déplacements
+                    pour le travail : en 2025, missions en Islande, Italie, Maroc,
+                    Banff, et 3 semaines aux États-Unis (White Sands, Grand Canyon).
+                </p>
+                <span class="fit-match">✓ Correspond → Bilingue & disponible pour voyager</span>
+            </div>
+            <div class="fit-card reveal">
+                <div class="fit-icon clients">🎯</div>
+                <h3>Communications & B2B</h3>
+                <p>
+                    Habitué à collaborer avec des équipes de production, des agences et des clients finaux importants
+                    comme l'Agence spatiale canadienne, Rheinmetall (via agence) et Sandoz Canada. À l'aise
+                    pour présenter des solutions techniques complexes de manière accessible.
+                </p>
+                <span class="fit-match">✓ Correspond → Excellent présentateur</span>
+            </div>
+            <div class="fit-card reveal">
+                <div class="fit-icon drone" style="background: rgba(249, 115, 22, 0.15);">🔧</div>
+                <h3>Innovation & Débrouillardise</h3>
+                <p>
+                    VR aérien DIY (12 GoPros), rig ballon-hélium sur montgolfière, impression 3D,
+                    vidéo VR Sandoz Canada, jeu vidéo Unity en solo. Problème → Solution, toujours.
+                </p>
+                <span class="fit-match">✓ Correspond → Créativité et persévérance</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJETS MARQUANTS -->
+    <section class="section" id="projets">
+        <div class="section-header reveal">
+            <span class="section-label">// Projets marquants</span>
+            <h2 class="section-title">Des mandats d'envergure</h2>
+            <p class="section-desc">
+                Des projets qui témoignent de ma capacité à livrer dans des environnements exigeants avec des clients de
+                calibre mondial.
+            </p>
+        </div>
+        <div class="projects-grid">
+            <div class="project-card reveal">
+                <div class="project-header">
+                    <div class="project-logo" style="background: rgba(139, 92, 246, 0.15);">🎬</div>
+                    <div>
+                        <h3>Transformers: Rise of the Beasts</h3>
+                        <span class="org">Paramount Pictures</span>
+                    </div>
+                </div>
+                <div class="project-body">
+                    <p>
+                        Opérateur de système robotisé Motion Impossible Agito sur cette superproduction
+                        hollywoodienne. Expérience pratique avec le contrôle de mouvement de précision pour
+                        des séquences cinématographiques complexes, ainsi que sur d'autres tournages majeurs
+                        incluant Michael Bublé et Chris Hadfield.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag robotics">Robotique</span>
+                        <span class="tag film">Cinéma</span>
+                        <span class="tag drone">Motion Control</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card reveal">
+                <div class="project-header">
+                    <div class="project-logo" style="background: rgba(59, 130, 246, 0.15);">🎮</div>
+                    <div>
+                        <h3>Unreal Engine — Hillside</h3>
+                        <span class="org">Epic Games</span>
+                    </div>
+                </div>
+                <div class="project-body">
+                    <p>
+                        Responsable de la capture de données aériennes par drone pour le projet
+                        Hillside d'Epic Games (Unreal Engine). Captation de données photogrammétriques de
+                        haute précision du bâtiment iconique Habitat 67 à Montréal pour la création
+                        d'environnements 3D réalistes.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag drone">Drone</span>
+                        <span class="tag lidar">Photogrammétrie</span>
+                        <span class="tag robotics">Unreal Engine</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card reveal">
+                <div class="project-header">
+                    <div class="project-logo" style="background: rgba(6, 182, 212, 0.15);">🚀</div>
+                    <div>
+                        <h3>Visite virtuelle</h3>
+                        <span class="org">Agence spatiale canadienne (ASC-CSA)</span>
+                    </div>
+                </div>
+                <div class="project-body">
+                    <p>
+                        En charge de la captation VR et données LiDAR avec Matterport pour le projet de
+                        visite virtuelle de l'Agence spatiale canadienne. Tournage en réalité virtuelle
+                        auprès du Canadarm et des rovers robotisés de l'ASC. Expérience immersive
+                        des installations spatiales accessible au public.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag lidar">LiDAR</span>
+                        <span class="tag inspection">Matterport</span>
+                        <span class="tag drone">VR 360°</span>
+                        <span class="tag robotics">Robotique spatiale</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card reveal">
+                <div class="project-header">
+                    <div class="project-logo" style="background: rgba(249, 115, 22, 0.15);">📺</div>
+                    <div>
+                        <h3>High Arctic Haulers</h3>
+                        <span class="org">Série TV — 7 épisodes</span>
+                    </div>
+                </div>
+                <div class="project-body">
+                    <p>
+                        Opérateur de drone caméra lors d'un séjour de tournage à Pangnirtung, au Nunavut.
+                        Belle expérience de travail et d'opération d'équipement dans des conditions de froid
+                        arctique.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag drone">Drone</span>
+                        <span class="tag film">Télévision</span>
+                        <span class="tag inspection">Conditions extrêmes</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card reveal">
+                <div class="project-header">
+                    <div class="project-logo" style="background: rgba(249, 115, 22, 0.15);">🔧</div>
+                    <div>
+                        <h3>Système VR aérien DIY</h3>
+                        <span class="org">LEO Films — Innovation interne (2014)</span>
+                    </div>
+                </div>
+                <div class="project-body">
+                    <p>
+                        Conception et assemblage d'un système de captation en réalité virtuelle
+                        aérienne avec 12 caméras GoPro synchronisées, montées sur un drone octorotor
+                        personnalisé. Conception de pièces imprimées en 3D pour les supports de caméra.
+                        Pionnier de la captation VR aérienne au Québec, témoignant de ma capacité à innover et résoudre
+                        des problèmes complexes.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag drone">Drone</span>
+                        <span class="tag robotics">DIY</span>
+                        <span class="tag lidar">VR 360°</span>
+                        <span class="tag inspection">Impression 3D</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card reveal">
+                <div class="project-header">
+                    <div class="project-logo" style="background: rgba(16, 185, 129, 0.15);">✈️</div>
+                    <div>
+                        <h3>Antonov 225 — Infoman / Nolinor</h3>
+                        <span class="org">Initiative personnelle — COVID-19 (2020)</span>
+                    </div>
+                </div>
+                <div class="project-body">
+                    <p>
+                        En plein confinement COVID, j'ai appris que l'Antonov 225 (le plus gros avion du monde)
+                        allait se poser à Mirabel. J'ai contacté directement Jean-René Dufort (Infoman, Radio-Canada)
+                        pour proposer un reportage, obtenant ainsi une accréditation média. Résultat : visite complète
+                        de l'appareil avec les pilotes ukrainiens et création d'un lien d'affaires durable avec
+                        un dirigeant de Nolinor Aviation.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag inspection">Networking</span>
+                        <span class="tag film">Média</span>
+                        <span class="tag drone">Initiative</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card reveal">
+                <div class="project-header">
+                    <div class="project-logo" style="background: rgba(6, 182, 212, 0.15);">🥁</div>
+                    <div>
+                        <h3>Sandoz Canada — Vidéo VR corporate</h3>
+                        <span class="org">Projet Réalité Virtuelle — Pharma (2024-2025)</span>
+                    </div>
+                </div>
+                <div class="project-body">
+                    <p>
+                        Conception et production d’une expérience vidéo en réalité virtuelle pour l’équipe
+                        de représentants de Sandoz Canada (groupe Novartis). L’outil VR permet aux reps
+                        de présenter les messages clés aux clients et mieux positionner Sandoz dans le marché.
+                        Réception très positive — un second vidéo déjà en planification.
+                    </p>
+                    <blockquote
+                        style="border-left: 3px solid var(--accent-cyan); padding-left: 1rem; margin: 0.75rem 0; font-style: italic; color: var(--text-secondary); font-size: 0.88rem;">
+                        « Les reps étaient vraiment contents de ce nouvel ajout à leurs outils.
+                        Certains m’ont même demandé quelle agence nous avions choisie! »
+                        <span
+                            style="display: block; color: var(--accent-cyan); font-style: normal; font-weight: 600; margin-top: 0.25rem;">—
+                            Josianne & Karine, Sandoz Canada</span>
+                    </blockquote>
+                    <div class="project-tags">
+                        <span class="tag lidar">Réalité Virtuelle</span>
+                        <span class="tag inspection">Pharma</span>
+                        <span class="tag film">Corporate</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card reveal">
+                <div class="project-header">
+                    <div class="project-logo" style="background: rgba(139, 92, 246, 0.15);">🎮</div>
+                    <div>
+                        <h3>Jeu vidéo mobile (en développement)</h3>
+                        <span class="org">Projet personnel — Unity & C#</span>
+                    </div>
+                </div>
+                <div class="project-body">
+                    <p>
+                        Développement en solo d'un jeu vidéo mobile sur Unity, sans formation formelle
+                        en programmation. Apprentissage autodidacte de C#, architecture client-serveur,
+                        et intégration backend. Démonstration de ma capacité d'apprentissage rapide
+                        et de ma passion pour la technologie.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag robotics">Unity</span>
+                        <span class="tag drone">C#</span>
+                        <span class="tag lidar">Autodidacte</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PARCOURS PROFESSIONNEL -->
+    <section class="section" id="parcours">
+        <div class="section-header reveal">
+            <span class="section-label">// Parcours professionnel</span>
+            <h2 class="section-title">Mon expérience</h2>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item reveal">
+                <div class="timeline-date">2013 — Présent</div>
+                <h3>Fondateur, Chef-pilote & Directeur des opérations drone</h3>
+                <div class="company">LEO Films — St-Lambert, QC (région de Montréal)</div>
+                <ul>
+                    <li>Fondation et gestion d'une entreprise de services de drone et de direction-photo vidéo</li>
+                    <li>Développement d'affaires : prospection, négociation de contrats, gestion de comptes clients
+                        corporatifs, gouvernementaux et productions cinéma/TV</li>
+                    <li>Supervision de toutes les opérations de drone — planification, exécution, sécurité et conformité
+                        réglementaire</li>
+                    <li>Ajout des services d'inspection industrielle par drone en 2020 (thermale, multispectrale)</li>
+                    <li>Gestion des relations avec les clients majeurs : producteurs TV/cinéma, entreprises
+                        corporatives, agences gouvernementales</li>
+                    <li>Coordination de ressources techniques internes et externes selon les besoins des projets</li>
+                </ul>
+            </div>
+            <div class="timeline-item reveal">
+                <div class="timeline-date">2020 — Présent</div>
+                <h3>Services d'inspection industrielle</h3>
+                <div class="company">LEO Films — Division inspection</div>
+                <ul>
+                    <li>Inspection visuelle et thermale par drone (DJI Matrice 300RTK, caméra multispectrale)</li>
+                    <li>Captation de données LiDAR et scan 3D (Matterport)</li>
+                    <li>Projets pour des clients d'envergure incluant l'Agence spatiale canadienne</li>
+                </ul>
+            </div>
+            <div class="timeline-item reveal">
+                <div class="timeline-date">2016 — Présent</div>
+                <h3>Opérateur drone & systèmes robotisés — Cinéma & TV</h3>
+                <div class="company">Productions variées (16 crédits IMDB)</div>
+                <ul>
+                    <li>Transformers: Rise of the Beasts (Paramount) — Opérateur Motion Control Agito</li>
+                    <li>Epic Games — Capture de données drone pour Unreal Engine (Hillside)</li>
+                    <li>Michael Bublé — Captation vidéo avec système robotisé Agito</li>
+                    <li>High Arctic Haulers (7 épisodes) — Opérateur drone caméra</li>
+                    <li>Nombreuses productions TV, cinéma, publicités et clips musicaux</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- CERTIFICATIONS & FORMATION -->
+    <section class="section">
+        <div class="section-header reveal">
+            <span class="section-label">// Certifications & Formation</span>
+            <h2 class="section-title">Qualifications</h2>
+        </div>
+        <div class="cert-grid">
+            <div class="cert-card reveal">
+                <div class="cert-icon">✈️</div>
+                <h4>Licence de pilote privé (PPL)</h4>
+                <p>Monomoteurs — Transports Canada</p>
+            </div>
+            <div class="cert-card reveal">
+                <div class="cert-icon">🚁</div>
+                <h4>Certification RPAS avancée</h4>
+                <p>Opérations en zones contrôlées et urbaines</p>
+            </div>
+            <div class="cert-card reveal">
+                <div class="cert-icon">🎓</div>
+                <h4>DEP</h4>
+                <p>Diplôme d'études professionnelles</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ÉQUIPEMENTS MAÎTRISÉS -->
+    <section class="section">
+        <div class="section-header reveal">
+            <span class="section-label">// Équipements maîtrisés</span>
+            <h2 class="section-title">Expertise technique</h2>
+            <p class="section-desc">
+                Une connaissance pratique et terrain des équipements que RRS distribue et supporte.
+            </p>
+        </div>
+        <div class="equip-grid">
+            <div class="equip-card reveal">
+                <div class="emoji">📡</div>
+                <h4>DJI Matrice 300RTK + D-RTK 2</h4>
+                <p>Inspection industrielle, caméra multispectrale & thermale</p>
+            </div>
+            <div class="equip-card reveal">
+                <div class="emoji">🎥</div>
+                <h4>DJI Inspire 1 / 2 / 3</h4>
+                <p>Caméras X7 et X5s — Production cinéma & TV</p>
+            </div>
+            <div class="equip-card reveal">
+                <div class="emoji">🤖</div>
+                <h4>Motion Impossible Agito</h4>
+                <p>Robot téléguidé autonome pour cinéma (Transformers, Michael Bublé, Chris Hadfield)</p>
+            </div>
+            <div class="equip-card reveal">
+                <div class="emoji">📐</div>
+                <h4>Matterport & LiDAR</h4>
+                <p>Scan 3D et visite virtuelle (Agence spatiale canadienne)</p>
+            </div>
+            <div class="equip-card reveal">
+                <div class="emoji">🌡️</div>
+                <h4>Caméra FLIR / Thermale</h4>
+                <p>Imagerie thermale et multispectrale pour inspection industrielle</p>
+            </div>
+            <div class="equip-card reveal">
+                <div class="emoji">🏋️</div>
+                <h4>Drones lourds (Heavy Lift)</h4>
+                <p>Pour caméras RED, ARRI, Blackmagic — productions cinéma</p>
+            </div>
+            <div class="equip-card reveal">
+                <div class="emoji">🛸</div>
+                <h4>DJI Phantom 3 / Mavic 3</h4>
+                <p>Captation aérienne polyvalente, photogrammétrie et repérage</p>
+            </div>
+            <div class="equip-card reveal">
+                <div class="emoji">🔧</div>
+                <h4>DJI F550 — Build sur mesure</h4>
+                <p>Soudure moteurs/ESC, choix d'hélices selon voltage/poids — expertise hardware</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FILMOGRAPHIE SÉLECTIVE -->
+    <section class="section" id="filmographie">
+        <div class="section-header reveal">
+            <span class="section-label">// Expérience de tournage</span>
+            <h2 class="section-title">Crédits IMDB</h2>
+            <p class="section-desc">
+                16 crédits professionnels au département caméra & éclairage (Opérateur de drone,
+                Opérateur Motion Control) sur des documentaires, séries télévisées et superproductions hollywoodiennes.
+            </p>
+            <a href="https://www.imdb.com/name/nm9951539/" target="_blank"
+                style="display: inline-block; margin-top: 1.5rem; padding: 0.75rem 1.5rem; background: rgba(34, 211, 238, 0.1); color: var(--accent-cyan); border: 1px solid rgba(34, 211, 238, 0.3); border-radius: 6px; text-decoration: none; font-weight: 500; transition: all 0.3s ease;">
+                Voir le profil complet sur IMDB ↗
+            </a>
+        </div>
+    </section>
+
+    <!-- CONTACT / CTA -->
+    <section class="cta-section" id="contact">
+        <div class="cta-content reveal">
+            <span class="section-label">// Prochaine étape</span>
+            <h2>Prêt à en discuter</h2>
+            <p>
+                Je serais ravi de vous rencontrer pour discuter de ma vision pour le développement
+                du secteur industriel chez RRS. Basé à St-Lambert (Rive-Sud de Montréal), disponible en
+                personne, en déplacement ou par vidéoconférence.
+            </p>
+            <div class="contact-cards">
+                <a href="mailto:julien@leofilms.ca" class="contact-card">
+                    <span class="icon">✉️</span>
+                    <div class="info">
+                        <div class="label">Courriel</div>
+                        <div class="value">julien@leofilms.ca</div>
+                    </div>
+                </a>
+                <a href="tel:+15142332040" class="contact-card">
+                    <span class="icon">📱</span>
+                    <div class="info">
+                        <div class="label">Téléphone</div>
+                        <div class="value">514-233-2040</div>
+                    </div>
+                </a>
+            </div>
+            <div class="cta-links">
+                <a href="https://www.leofilms.ca/" target="_blank" class="cta-link">
+                    🌐 leofilms.ca
+                </a>
+                <a href="https://www.imdb.com/name/nm9951539/" target="_blank" class="cta-link">
+                    🎬 Profil IMDB
+                </a>
+                <a href="https://www.asc-csa.gc.ca/fra/a-propos/visite-virtuelle/" target="_blank" class="cta-link">
+                    🚀 Visite virtuelle ASC
+                </a>
+                <a href="https://www.unrealengine.com/en-US/hillside" target="_blank" class="cta-link">
+                    🎮 Epic Games Hillside
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Julien Brault-Chénier — Candidature RRS 2025 — St-Lambert, QC (région de Montréal)</p>
+    </footer>
+
+    <script>
+        // Scroll reveal animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Nav scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('.nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(10, 14, 23, 0.95)';
+            } else {
+                nav.style.background = 'rgba(10, 14, 23, 0.8)';
+            }
+        });
+    </script>
+</body>
+
+</html>
